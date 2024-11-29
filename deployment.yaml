@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: python-flask-deployment
+  labels:
+    app: python-flask
+spec:
+  replicas: 3  # Number of pods to run (adjust as needed)
+  selector:
+    matchLabels:
+      app: python-flask
+  template:
+    metadata:
+      labels:
+        app: python-flask
+    spec:
+      containers:
+        - name: python-flask
+          image: <your-dockerhub-username>/python-flask-app:latest  # Replace with your image name
+          ports:
+            - containerPort: 5000  # Port exposed by the Flask app in the container
