@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: python-flask-service
+spec:
+  selector:
+    app: python-flask
+  ports:
+    - protocol: TCP
+      port: 80        # The port exposed by the service (external port)
+      targetPort: 5000 # The port on which the Flask application listens in the container
+  type: LoadBalancer  # You can use NodePort or ClusterIP depending on your setup
